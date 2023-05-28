@@ -8,13 +8,18 @@ public abstract class Puzzle {
     /**
      * The size of the Puzzle's grid.
      */
-    private int gridSize;
+    private final int GRID_SIZE;
     /**
      * The Puzzle's {@link Grid}.
      */
-    private Grid grid;
+    private Grid GRID;
     /**
      * Whether the Puzzle's Grid has a perimeter containing necessary data.
      */
-    private boolean hasPerimeter;
+    private final boolean HAS_PERIMETER;
+
+    public Puzzle(int GRID_SIZE, boolean HAS_PERIMETER) {
+        this.GRID_SIZE = GRID_SIZE;
+        this.HAS_PERIMETER = HAS_PERIMETER;
+    }
 }
