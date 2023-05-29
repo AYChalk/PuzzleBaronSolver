@@ -18,8 +18,9 @@ public abstract class Puzzle {
      */
     private final boolean HAS_PERIMETER;
 
-    public Puzzle(int GRID_SIZE, boolean HAS_PERIMETER) {
+    public Puzzle(int GRID_SIZE, boolean HAS_PERIMETER, String[][] tileInfo) {
         this.GRID_SIZE = GRID_SIZE;
         this.HAS_PERIMETER = HAS_PERIMETER;
     }
+
 }
