@@ -13,14 +13,21 @@ public abstract class Puzzle {
      * The Puzzle's {@link Grid}.
      */
     private Grid GRID;
-    /**
-     * Whether the Puzzle's Grid has a perimeter containing necessary data.
-     */
-    private final boolean HAS_PERIMETER;
 
-    public Puzzle(int GRID_SIZE, boolean HAS_PERIMETER, String[][] tileInfo) {
+    /**
+     * Whether the puzzle has been completed according to its specified rules.
+     */
+    private boolean gameOver;
+
+    /**
+     * Constructs a new Puzzle and creates the Puzzle's Grid.
+     *
+     * @param GRID_SIZE The size of the Puzzle's {@link #GRID}.
+     * @param tileInfo  The information pertaining to the {@link Tile}s that populate the GRID.
+     */
+    public Puzzle(int GRID_SIZE,  String[][] tileInfo) {
         this.GRID_SIZE = GRID_SIZE;
-        this.HAS_PERIMETER = HAS_PERIMETER;
+        this.gameOver = false;
     }
 
 }
