@@ -3,6 +3,12 @@ package Puzzle.StarBattle;
 import Puzzle.Grid;
 import Puzzle.Tile;
 
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * This class represents the grid in which the puzzle's tile are placed.
+ */
 public class StarBattleGrid extends Grid {
 
     /**
@@ -19,8 +25,50 @@ public class StarBattleGrid extends Grid {
         super(size, tileInfo);
     }
 
+    /**
+     * Fills the Grid with {@link StarBattlePlayTile}s.
+     *
+     * @param tileInfo information pertaining to the Tiles.
+     */
     @Override
     public void gridFiller(String[][] tileInfo) {
+        int size = getSIZE();
+        int id = 0;
+        List<StarBattlePlayTile> tiles;
+        String tileGroup;
 
+        for (int i = 0; i < size; i++){
+            tiles = new ArrayList<>();
+            for (int j = 0; j < size; j++){
+                tileGroup = tileInfo[id][0];
+                tiles.add(new StarBattlePlayTile(i, j, id, tileGroup));
+                id++;
+            }
+            this.getGRID().add(tiles);
+        }
+    }
+
+    /**
+     * Finds all the Tiles of a given Tile Group.
+     *
+     * @param tileGroup the Tile Group to be found.
+     * @return a List of all the Tiles that belong to the group.
+     */
+    public List<StarBattlePlayTile> getTileGroup(String tileGroup) {
+        List<StarBattlePlayTile> group = new ArrayList<>();
+
+        StarBattlePlayTile starBattlePlayTile;
+
+        for (List<? extends Tile> tileList : this.getGRID()) {
+            for (Tile tile : tileList) {
+                starBattlePlayTile = (StarBattlePlayTile) tile;
+
+                if (starBattlePlayTile.getTILE_GROUP().equals(tileGroup)) {
+                    group.add(starBattlePlayTile);
+                }
+            }
+        }
+
+        return group;
     }
 }

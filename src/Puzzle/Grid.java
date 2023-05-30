@@ -25,7 +25,7 @@ public abstract class Grid {
      * <p>
      * It is immutable; the variable is final.
      */
-    private final List<List<Tile>> GRID;
+    private final List<List<? extends Tile>> GRID;
 
     /**
      * Constructs a Grid of size * size and initialises the {@link #GRID} field.
@@ -56,4 +56,35 @@ public abstract class Grid {
      */
     public abstract void gridFiller(String[][] tileInfo);
 
+    /**
+     * @return the {@link #SIZE} of the Grid.
+     */
+    public int getSIZE() {
+        return SIZE;
+    }
+
+    /**
+     * @return the {@link #GRID}
+     */
+    public List<List<? extends Tile>> getGRID() {
+        return GRID;
+    }
+
+    /**
+     * Finds a Tile in the {@link #GRID} based on a given ID.
+     *
+     * @param id the id of the desired tile.
+     * @return a Tile whose ID matches that of the parsed int; null if none exist
+     */
+    public Tile getTileById(int id) {
+        for (List<? extends Tile> list : GRID) {
+            for (Tile tile : list) {
+                if (tile.getID() == id) {
+                    return tile;
+                }
+            }
+        }
+
+        return null;
+    }
 }
