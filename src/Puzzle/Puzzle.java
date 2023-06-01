@@ -30,4 +30,17 @@ public abstract class Puzzle {
         this.gameOver = false;
     }
 
+    /**
+     * @return true if the game is over, false if it isn't.
+     */
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    /**
+     * @param gameOver parse true if the game is over.
+     */
+    public void setGameOver(boolean gameOver) {
+        this.gameOver = gameOver;
+    }
 }
