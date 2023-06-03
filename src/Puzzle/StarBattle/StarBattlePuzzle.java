@@ -21,6 +21,8 @@ import Puzzle.TileState;
  */
 public class StarBattlePuzzle extends Puzzle {
 
+    private final StarBattleGrid STAR_BATTLE_GRID;
+
     /**
      * The amount of stars ({@link TileState#CHECKED} {@link StarBattlePlayTile}s) per row, column, and shape
      * on the {@link StarBattleGrid}.
@@ -29,15 +31,6 @@ public class StarBattlePuzzle extends Puzzle {
      */
     private final int STARS;
 
-    /**
-     * The total amount of {@link StarBattlePlayTile}s that need to be checked for the game to be over.
-     */
-    private final int TOTAL_STARS;
-
-    /**
-     * How many {@link StarBattlePlayTile}s on the {@link StarBattleGrid} are marked as Stars.
-     */
-    private int currentStars;
 
     /**
      * Constructs a new Puzzle and creates the Puzzle's Grid.
@@ -50,7 +43,7 @@ public class StarBattlePuzzle extends Puzzle {
     public StarBattlePuzzle(int GRID_SIZE, String[][] tileInfo, int STARS) {
         super(GRID_SIZE, tileInfo);
         this.STARS = STARS;
-        TOTAL_STARS = GRID_SIZE * STARS;
+        this.STAR_BATTLE_GRID = new StarBattleGrid(GRID_SIZE, tileInfo);
     }
 
     /**
@@ -60,35 +53,4 @@ public class StarBattlePuzzle extends Puzzle {
         return STARS;
     }
 
-    /**
-     * @return the {@link #TOTAL_STARS} field.
-     */
-    public int getTOTAL_STARS() {
-        return TOTAL_STARS;
-    }
-
-    /**
-     * @return the {@link #currentStars} field.
-     */
-    public int getCurrentStars() {
-        return currentStars;
-    }
-
-    /**
-     * @param currentStars the new value of the {@link #currentStars}
-     */
-    public void setCurrentStars(int currentStars) {
-        this.currentStars = currentStars;
-    }
-
-    /**
-     * Increments the {@link #currentStars} value by one and, if it equals {@link #TOTAL_STARS},
-     * sets the value of gameOver to true.
-     */
-    public void incrementStars() {
-        this.currentStars++;
-        if (currentStars == TOTAL_STARS) {
-            setGameOver(true);
-        }
-    }
 }

@@ -71,4 +71,20 @@ public class StarBattleGrid extends Grid {
 
         return group;
     }
+
+    /**
+     * Finds all the Tiles of a given column.
+     *
+     * @param tileColumn the desired column number from the Grid (starting from 0)
+     * @return a List populated with all the {@link StarBattlePlayTile}s in the specified column.
+     */
+    public List<StarBattlePlayTile> getTileColumn(int tileColumn) {
+        List<StarBattlePlayTile> column = new ArrayList<>();
+
+        for (List<? extends Tile> tileList : this.getGRID()) {
+            column.add((StarBattlePlayTile) tileList.get(tileColumn));
+        }
+
+        return column;
+    }
 }

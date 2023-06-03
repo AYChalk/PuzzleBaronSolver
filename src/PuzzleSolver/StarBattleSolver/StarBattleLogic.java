@@ -1,6 +1,4 @@
 package PuzzleSolver.StarBattleSolver;
 
-public class StarBattleSolver {
-
-
+public class StarBattleLogic {
 }
