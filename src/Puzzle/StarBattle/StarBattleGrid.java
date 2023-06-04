@@ -41,7 +41,7 @@ public class StarBattleGrid extends Grid {
             tiles = new ArrayList<>();
             for (int j = 0; j < size; j++){
                 tileGroup = tileInfo[id][0];
-                tiles.add(new StarBattlePlayTile(i, j, id, tileGroup));
+                tiles.add(new StarBattlePlayTile(j, i, id, tileGroup));
                 id++;
             }
             this.getGRID().add(tiles);

@@ -7,7 +7,7 @@ import Puzzle.TileState;
 /**
  * This Class represents the StarBattle puzzle that can be found
  * on the <a href="https://starbattle.puzzlebaron.com/">PuzzleBaron</a> website.
- * <p></p>
+ * <p>
  * This Puzzle's gameplay is as follows:
  * <ul>
  *     <li>The player chooses the size of the Puzzle's grid.</li>
@@ -15,12 +15,15 @@ import Puzzle.TileState;
  *     <li>A grid of size * size tiles is created.</li>
  *     <li>Each of the tiles also belongs to a "group".</li>
  *     <li>Each row and column in the grid, as well as each group, have to contain exactly x amount of stars.</li>
- *     <li>Stars cannot touch each other (orthogonally).</li>
+ *     <li>Stars cannot touch each other.</li>
  *     <li>The game is over once all the stars have been placed in the correct position.</li>
  * </ul>
  */
 public class StarBattlePuzzle extends Puzzle {
 
+    /**
+     * The Puzzle's {@link StarBattleGrid}
+     */
     private final StarBattleGrid STAR_BATTLE_GRID;
 
     /**
@@ -53,4 +56,10 @@ public class StarBattlePuzzle extends Puzzle {
         return STARS;
     }
 
+    /**
+     * @return {@link #STAR_BATTLE_GRID}
+     */
+    public StarBattleGrid getSTAR_BATTLE_GRID() {
+        return STAR_BATTLE_GRID;
+    }
 }
