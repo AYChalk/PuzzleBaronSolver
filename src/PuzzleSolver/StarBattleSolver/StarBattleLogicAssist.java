@@ -3,6 +3,8 @@ package PuzzleSolver.StarBattleSolver;
 import Puzzle.StarBattle.*;
 import Puzzle.TileState;
 
+import java.util.List;
+
 /**
  * This class provides helper methods for the {@link  StarBattleLogic} class.
  */
@@ -134,5 +136,41 @@ public class StarBattleLogicAssist {
             StarBattlePlayTile starBattlePlayTile1 = (StarBattlePlayTile) starBattleGrid.getGRID().get(y-1).get(x-1);
             starBattlePlayTile1.setTileState(TileState.EXCLUDED);
         } catch (IndexOutOfBoundsException ignored) {}
+    }
+
+    /**
+     * Calculates the amount of stars ({@link TileState#CHECKED}) in a given region
+     * (row, colum or tile group).
+     *
+     * @param tileList The region being checked.
+     * @return The amount of {@link StarBattlePlayTile}s that contain stars.
+     */
+    public static int numberOfStars(List<StarBattlePlayTile> tileList) {
+        int result = 0;
+
+        for (StarBattlePlayTile starBattlePlayTile : tileList) {
+            if (starBattlePlayTile.getTileState().equals(TileState.CHECKED)) {
+                result++;
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * Determines whether a given region (row, column, or tile group) in the {@link StarBattleGrid}
+     * has the maximum possible amount of stars ({@link TileState#CHECKED}).
+     * <p>
+     * The maximum amount of stars/region is determined by {@link StarBattlePuzzle#getSTARS()}.
+     *
+     * @param starBattlePuzzle The {@link StarBattlePuzzle} being solved.
+     * @param tileList The region being checked.
+     * @return True, if the maximum amount of stars has been reached, false if not.
+     */
+    public static boolean hasMaxStars(StarBattlePuzzle starBattlePuzzle, List<StarBattlePlayTile> tileList) {
+        int maxStars = starBattlePuzzle.getSTARS();
+        int currentStars = numberOfStars(tileList);
+
+        return maxStars == currentStars;
     }
 }

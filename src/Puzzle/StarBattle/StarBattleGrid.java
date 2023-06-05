@@ -87,4 +87,20 @@ public class StarBattleGrid extends Grid {
 
         return column;
     }
+
+    /**
+     * Finds all the Tiles of a given row.
+     *
+     * @param tileRow the desired row number from the Grid (starting from 0)
+     * @return a List populated with all the {@link StarBattlePlayTile}s in the specified row.
+     */
+    public List<StarBattlePlayTile> getTileRow(int tileRow) {
+        List<StarBattlePlayTile> row = new ArrayList<>();
+
+        for (int i = 0; i < getSIZE(); i++) {
+            row.add((StarBattlePlayTile) getGRID().get(0).get(i));
+        }
+
+        return row;
+    }
 }
