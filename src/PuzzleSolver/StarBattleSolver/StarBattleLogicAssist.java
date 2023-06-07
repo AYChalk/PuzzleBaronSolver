@@ -173,4 +173,19 @@ public class StarBattleLogicAssist {
 
         return maxStars == currentStars;
     }
+
+    /**
+     * Once a region (row, column, or tile group) contains the maximum amount of stars
+     * excludes the remaining {@link StarBattlePlayTile}s.
+     *
+     * @param tileList The region of Tiles.
+     */
+    public static void excludeRemainder(List<StarBattlePlayTile> tileList) {
+        for (StarBattlePlayTile tile : tileList) {
+            if (tile.getTileState().equals(TileState.BLANK)) {
+                tile.setTileState(TileState.EXCLUDED);
+            }
+        }
+    }
+
 }
