@@ -1,4 +1,4 @@
-package Puzzle;
+package Main.Puzzle;
 
 /**
  * This Enum indicates/determines the content of any given {@link PlayTile}.
@@ -16,7 +16,7 @@ public enum TileState {
     EXCLUDED,
     /**
      * The {@link PlayTile} has been selected by the player.
-     * This differs from Puzzle to Puzzle.
+     * This differs from Main.Puzzle to Main.Puzzle.
      */
     CHECKED;
 

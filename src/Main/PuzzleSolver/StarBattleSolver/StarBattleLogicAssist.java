@@ -1,7 +1,7 @@
-package PuzzleSolver.StarBattleSolver;
+package Main.PuzzleSolver.StarBattleSolver;
 
-import Puzzle.StarBattle.*;
-import Puzzle.TileState;
+import Main.Puzzle.StarBattle.*;
+import Main.Puzzle.TileState;
 
 import java.util.List;
 
@@ -11,18 +11,30 @@ import java.util.List;
 public class StarBattleLogicAssist {
 
     /**
+     * Finds the adjacent up {@link StarBattlePlayTile} as {@link  TileState#EXCLUDED}.
+     *
+     * @param starBattleGrid The {@link StarBattleGrid} of the current {@link StarBattlePuzzle}.
+     * @param starBattlePlayTile The Tile.
+     * @return The adjacent-up tile.
+     * @throws IndexOutOfBoundsException If
+     */
+    public static StarBattlePlayTile findUp(StarBattleGrid starBattleGrid, StarBattlePlayTile starBattlePlayTile) throws IndexOutOfBoundsException {
+        int x = starBattlePlayTile.getX();
+        int y = starBattlePlayTile.getY();
+
+        return (StarBattlePlayTile) starBattleGrid.getGRID().get(y-1).get(x);
+    }
+
+    /**
      * Marks the adjacent up {@link StarBattlePlayTile} as {@link  TileState#EXCLUDED}.
      *
      * @param starBattleGrid The {@link StarBattleGrid} of the current {@link StarBattlePuzzle}.
      * @param starBattlePlayTile The Tile.
      */
     public static void excludeUp(StarBattleGrid starBattleGrid, StarBattlePlayTile starBattlePlayTile) {
-        int x = starBattlePlayTile.getX();
-        int y = starBattlePlayTile.getY();
 
         try {
-            StarBattlePlayTile starBattlePlayTile1 = (StarBattlePlayTile) starBattleGrid.getGRID().get(y-1).get(x);
-            starBattlePlayTile1.setTileState(TileState.EXCLUDED);
+            findUp(starBattleGrid, starBattlePlayTile).setTileState(TileState.EXCLUDED);
         } catch (IndexOutOfBoundsException ignored) {}
     }
 

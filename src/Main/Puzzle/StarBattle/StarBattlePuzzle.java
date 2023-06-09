@@ -1,16 +1,16 @@
-package Puzzle.StarBattle;
+package Main.Puzzle.StarBattle;
 
-import Puzzle.Puzzle;
-import Puzzle.Tile;
-import Puzzle.TileState;
+import Main.Puzzle.Puzzle;
+import Main.Puzzle.Tile;
+import Main.Puzzle.TileState;
 
 /**
  * This Class represents the StarBattle puzzle that can be found
  * on the <a href="https://starbattle.puzzlebaron.com/">PuzzleBaron</a> website.
  * <p>
- * This Puzzle's gameplay is as follows:
+ * This Main.Puzzle's gameplay is as follows:
  * <ul>
- *     <li>The player chooses the size of the Puzzle's grid.</li>
+ *     <li>The player chooses the size of the Main.Puzzle's grid.</li>
  *     <li>The player chooses the amounts of stars in the grid (x).</li>
  *     <li>A grid of size * size tiles is created.</li>
  *     <li>Each of the tiles also belongs to a "group".</li>
@@ -22,7 +22,7 @@ import Puzzle.TileState;
 public class StarBattlePuzzle extends Puzzle {
 
     /**
-     * The Puzzle's {@link StarBattleGrid}
+     * The Main.Puzzle's {@link StarBattleGrid}
      */
     private final StarBattleGrid STAR_BATTLE_GRID;
 
@@ -36,9 +36,9 @@ public class StarBattlePuzzle extends Puzzle {
 
 
     /**
-     * Constructs a new Puzzle and creates the Puzzle's Grid.
+     * Constructs a new Main.Puzzle and creates the Main.Puzzle's Grid.
      *
-     * @param GRID_SIZE The size of the Puzzle's Grid.
+     * @param GRID_SIZE The size of the Main.Puzzle's Grid.
      * @param tileInfo  The information pertaining to the {@link Tile}s that populate the GRID.
      *                  In this class, the only information require is the {@link StarBattlePlayTile}s
      *                  ID. This is in the form of a single alphabetical character.

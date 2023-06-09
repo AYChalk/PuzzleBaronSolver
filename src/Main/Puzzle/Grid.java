@@ -1,4 +1,4 @@
-package Puzzle;
+package Main.Puzzle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ public abstract class Grid {
 
     /**
      * A 2D List containing {@link Tile}s.
-     * This is the Grid that makes up the Puzzle.
+     * This is the Grid that makes up the Main.Puzzle.
      * <p>
      * Upon construction of a Grid object it should be populated with Tiles.
      * <p>

@@ -1,7 +1,7 @@
-package PuzzleSolver.StarBattleSolver;
+package Main.PuzzleSolver.StarBattleSolver;
 
-import Puzzle.StarBattle.*;
-import Puzzle.TileState;
+import Main.Puzzle.StarBattle.*;
+import Main.Puzzle.TileState;
 
 /**
  * This class sets out the logic and rules of the gameplay.
@@ -41,9 +41,9 @@ public class StarBattleLogic {
     }
 
     /**
-     * {@link StarBattlePlayTile}s that contain stars ({@link Puzzle.TileState#CHECKED})
+     * {@link StarBattlePlayTile}s that contain stars ({@link Main.Puzzle.TileState#CHECKED})
      * cannot be adjacent. Therefore, if a StarBattlePlayTile contains a star, this method
-     * marks all the adjacent StarBattlePlayTiles as {@link Puzzle.TileState#EXCLUDED}.
+     * marks all the adjacent StarBattlePlayTiles as {@link Main.Puzzle.TileState#EXCLUDED}.
      *
      * @param starBattleGrid The Grid of the {@link StarBattlePuzzle} being solved.
      * @param starBattlePlayTile The {@link StarBattlePlayTile} that contains a star.

@@ -1,10 +1,10 @@
-package Puzzle;
+package Main.Puzzle;
 
 /**
  * This class is for Tiles that are set by the game.
  * The player does not interact with these Tiles.
  *
- * In some Puzzle types they can have different values.
+ * In some Main.Puzzle types they can have different values.
  */
 public abstract class GameTile extends Tile {
     /**
