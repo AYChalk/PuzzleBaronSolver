@@ -11,7 +11,7 @@ public class StarBattleLogic {
     /**
      * Marks a given {@link StarBattlePlayTile} as {@link TileState#CHECKED}.
      * Marks the adjacent Tiles as {@link TileState#EXCLUDED}
-     * using the {@link #markAdjacentTilesBlank(StarBattleGrid, StarBattlePlayTile)} method.
+     * using the {@link #markAdjacentTilesExcluded(StarBattleGrid, StarBattlePlayTile)} method.
      * Checks the row, column, and tile group of the tile, anf if any of them contains  the maximum amount of stars,
      * excludes the remaining tiles.
      *
@@ -21,7 +21,7 @@ public class StarBattleLogic {
      */
     public static void markAsStar(StarBattlePuzzle starBattlePuzzle, StarBattleGrid starBattleGrid, StarBattlePlayTile starBattlePlayTile) {
         starBattlePlayTile.setTileState(TileState.CHECKED);
-        markAdjacentTilesBlank(starBattleGrid, starBattlePlayTile);
+        markAdjacentTilesExcluded(starBattleGrid, starBattlePlayTile);
 
         int row = starBattlePlayTile.getY();
         int column = starBattlePlayTile.getX();
@@ -40,6 +40,10 @@ public class StarBattleLogic {
         }
     }
 
+    public static void markAsExcluded(StarBattlePuzzle starBattlePuzzle, StarBattleGrid starBattleGrid, StarBattlePlayTile starBattlePlayTile) {
+        starBattlePlayTile.setTileState(TileState.EXCLUDED);
+    }
+
     /**
      * {@link StarBattlePlayTile}s that contain stars ({@link Main.Puzzle.TileState#CHECKED})
      * cannot be adjacent. Therefore, if a StarBattlePlayTile contains a star, this method
@@ -48,7 +52,7 @@ public class StarBattleLogic {
      * @param starBattleGrid The Grid of the {@link StarBattlePuzzle} being solved.
      * @param starBattlePlayTile The {@link StarBattlePlayTile} that contains a star.
      */
-    public static void markAdjacentTilesBlank(StarBattleGrid starBattleGrid, StarBattlePlayTile starBattlePlayTile) {
+    public static void markAdjacentTilesExcluded(StarBattleGrid starBattleGrid, StarBattlePlayTile starBattlePlayTile) {
         StarBattleLogicAssist.excludeUp(starBattleGrid, starBattlePlayTile);
         StarBattleLogicAssist.excludeUpRight(starBattleGrid, starBattlePlayTile);
         StarBattleLogicAssist.excludeRight(starBattleGrid, starBattlePlayTile);
@@ -59,8 +63,6 @@ public class StarBattleLogic {
         StarBattleLogicAssist.excludeUpLeft(starBattleGrid, starBattlePlayTile);
 
     }
-
-
 
     /**
      * Determines whether a row in a given {@link StarBattleGrid} has the maximum amount of

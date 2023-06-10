@@ -226,15 +226,34 @@ public class StarBattleLogicAssist {
      * @return The amount of {@link StarBattlePlayTile}s that contain stars.
      */
     public static int numberOfStars(List<StarBattlePlayTile> tileList) {
-        int result = 0;
+        int count = 0;
 
         for (StarBattlePlayTile starBattlePlayTile : tileList) {
             if (starBattlePlayTile.getTileState().equals(TileState.CHECKED)) {
-                result++;
+                count++;
             }
         }
 
-        return result;
+        return count;
+    }
+
+    /**
+     * Calculates the amount of blanks ({@link TileState#BLANK}) in a given region
+     * (row, colum or tile group).
+     *
+     * @param tileList The region being checked.
+     * @return The amount of {@link StarBattlePlayTile}s that are blank.
+     */
+    public static int numberOfBlanks(List<StarBattlePlayTile> tileList) {
+        int count = 0;
+
+        for (StarBattlePlayTile starBattlePlayTile : tileList) {
+            if (starBattlePlayTile.getTileState().equals(TileState.BLANK)) {
+                count++;
+            }
+        }
+
+        return count;
     }
 
     /**
