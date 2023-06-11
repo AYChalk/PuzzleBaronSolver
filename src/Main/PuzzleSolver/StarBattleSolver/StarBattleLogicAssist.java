@@ -11,12 +11,31 @@ import java.util.List;
 public class StarBattleLogicAssist {
 
     /**
-     * @param starBattleGrid The {@link StarBattleGrid} of the current {@link StarBattlePuzzle}.
+     * The {@link StarBattlePuzzle} being solved.
+     */
+    private static StarBattlePuzzle starBattlePuzzle;
+
+    /**
+     * The {@link StarBattleGrid} of the {@link StarBattlePuzzle} being solved.
+     */
+    private static StarBattleGrid starBattleGrid;
+
+    /**
+     * Sets the value of {@link #starBattlePuzzle} and {@link #starBattleGrid}.
+     *
+     * @param starBattlePuzzle The {@link StarBattlePuzzle} being solved.
+     */
+    public static void setStarBattlePuzzle(StarBattlePuzzle starBattlePuzzle) {
+        StarBattleLogicAssist.starBattlePuzzle = starBattlePuzzle;
+        StarBattleLogicAssist.starBattleGrid = starBattlePuzzle.getSTAR_BATTLE_GRID();
+    }
+
+    /**
      * @param starBattlePlayTile The Tile.
      * @return The adjacent up {@link StarBattlePlayTile}.
      * @throws IndexOutOfBoundsException If the adjacent Tile would be outside the Grid's parameters.
      */
-    public static StarBattlePlayTile findUp(StarBattleGrid starBattleGrid, StarBattlePlayTile starBattlePlayTile) throws IndexOutOfBoundsException {
+    public static StarBattlePlayTile findUp(StarBattlePlayTile starBattlePlayTile) throws IndexOutOfBoundsException {
         int x = starBattlePlayTile.getX();
         int y = starBattlePlayTile.getY();
 
@@ -24,12 +43,11 @@ public class StarBattleLogicAssist {
     }
 
     /**
-     * @param starBattleGrid The {@link StarBattleGrid} of the current {@link StarBattlePuzzle}.
      * @param starBattlePlayTile The Tile.
      * @return The adjacent up-right {@link StarBattlePlayTile}.
      * @throws IndexOutOfBoundsException If the adjacent Tile would be outside the Grid's parameters.
      */
-    public static StarBattlePlayTile findUpRight(StarBattleGrid starBattleGrid, StarBattlePlayTile starBattlePlayTile) throws IndexOutOfBoundsException {
+    public static StarBattlePlayTile findUpRight(StarBattlePlayTile starBattlePlayTile) throws IndexOutOfBoundsException {
         int x = starBattlePlayTile.getX();
         int y = starBattlePlayTile.getY();
 
@@ -37,12 +55,11 @@ public class StarBattleLogicAssist {
     }
 
     /**
-     * @param starBattleGrid The {@link StarBattleGrid} of the current {@link StarBattlePuzzle}.
      * @param starBattlePlayTile The Tile.
      * @return The adjacent right {@link StarBattlePlayTile}.
      * @throws IndexOutOfBoundsException If the adjacent Tile would be outside the Grid's parameters.
      */
-    public static StarBattlePlayTile findRight(StarBattleGrid starBattleGrid, StarBattlePlayTile starBattlePlayTile) throws IndexOutOfBoundsException {
+    public static StarBattlePlayTile findRight(StarBattlePlayTile starBattlePlayTile) throws IndexOutOfBoundsException {
         int x = starBattlePlayTile.getX();
         int y = starBattlePlayTile.getY();
 
@@ -50,12 +67,11 @@ public class StarBattleLogicAssist {
     }
 
     /**
-     * @param starBattleGrid The {@link StarBattleGrid} of the current {@link StarBattlePuzzle}.
      * @param starBattlePlayTile The Tile.
      * @return The adjacent down-right {@link StarBattlePlayTile}.
      * @throws IndexOutOfBoundsException If the adjacent Tile would be outside the Grid's parameters.
      */
-    public static StarBattlePlayTile findDownRight(StarBattleGrid starBattleGrid, StarBattlePlayTile starBattlePlayTile) throws IndexOutOfBoundsException {
+    public static StarBattlePlayTile findDownRight(StarBattlePlayTile starBattlePlayTile) throws IndexOutOfBoundsException {
         int x = starBattlePlayTile.getX();
         int y = starBattlePlayTile.getY();
 
@@ -63,12 +79,11 @@ public class StarBattleLogicAssist {
     }
 
     /**
-     * @param starBattleGrid The {@link StarBattleGrid} of the current {@link StarBattlePuzzle}.
      * @param starBattlePlayTile The Tile.
      * @return The adjacent down {@link StarBattlePlayTile}.
      * @throws IndexOutOfBoundsException If the adjacent Tile would be outside the Grid's parameters.
      */
-    public static StarBattlePlayTile findDown(StarBattleGrid starBattleGrid, StarBattlePlayTile starBattlePlayTile) throws IndexOutOfBoundsException {
+    public static StarBattlePlayTile findDown(StarBattlePlayTile starBattlePlayTile) throws IndexOutOfBoundsException {
         int x = starBattlePlayTile.getX();
         int y = starBattlePlayTile.getY();
 
@@ -76,12 +91,11 @@ public class StarBattleLogicAssist {
     }
 
     /**
-     * @param starBattleGrid The {@link StarBattleGrid} of the current {@link StarBattlePuzzle}.
      * @param starBattlePlayTile The Tile.
      * @return The adjacent down-left {@link StarBattlePlayTile}.
      * @throws IndexOutOfBoundsException If the adjacent Tile would be outside the Grid's parameters.
      */
-    public static StarBattlePlayTile findDownLeft(StarBattleGrid starBattleGrid, StarBattlePlayTile starBattlePlayTile) throws IndexOutOfBoundsException {
+    public static StarBattlePlayTile findDownLeft(StarBattlePlayTile starBattlePlayTile) throws IndexOutOfBoundsException {
         int x = starBattlePlayTile.getX();
         int y = starBattlePlayTile.getY();
 
@@ -89,12 +103,11 @@ public class StarBattleLogicAssist {
     }
 
     /**
-     * @param starBattleGrid The {@link StarBattleGrid} of the current {@link StarBattlePuzzle}.
      * @param starBattlePlayTile The Tile.
      * @return The adjacent left {@link StarBattlePlayTile}.
      * @throws IndexOutOfBoundsException If the adjacent Tile would be outside the Grid's parameters.
      */
-    public static StarBattlePlayTile findLeft(StarBattleGrid starBattleGrid, StarBattlePlayTile starBattlePlayTile) throws IndexOutOfBoundsException {
+    public static StarBattlePlayTile findLeft(StarBattlePlayTile starBattlePlayTile) throws IndexOutOfBoundsException {
         int x = starBattlePlayTile.getX();
         int y = starBattlePlayTile.getY();
 
@@ -102,12 +115,11 @@ public class StarBattleLogicAssist {
     }
 
     /**
-     * @param starBattleGrid The {@link StarBattleGrid} of the current {@link StarBattlePuzzle}.
      * @param starBattlePlayTile The Tile.
      * @return The adjacent up-left {@link StarBattlePlayTile}.
      * @throws IndexOutOfBoundsException If the adjacent Tile would be outside the Grid's parameters.
      */
-    public static StarBattlePlayTile findUpLeft(StarBattleGrid starBattleGrid, StarBattlePlayTile starBattlePlayTile) throws IndexOutOfBoundsException {
+    public static StarBattlePlayTile findUpLeft(StarBattlePlayTile starBattlePlayTile) throws IndexOutOfBoundsException {
         int x = starBattlePlayTile.getX();
         int y = starBattlePlayTile.getY();
 
@@ -117,104 +129,96 @@ public class StarBattleLogicAssist {
     /**
      * Marks the adjacent up {@link StarBattlePlayTile} as {@link  TileState#EXCLUDED}.
      *
-     * @param starBattleGrid The {@link StarBattleGrid} of the current {@link StarBattlePuzzle}.
      * @param starBattlePlayTile The Tile.
      */
-    public static void excludeUp(StarBattleGrid starBattleGrid, StarBattlePlayTile starBattlePlayTile) {
+    public static void excludeUp(StarBattlePlayTile starBattlePlayTile) {
 
         try {
-            findUp(starBattleGrid, starBattlePlayTile).setTileState(TileState.EXCLUDED);
+            findUp(starBattlePlayTile).setTileState(TileState.EXCLUDED);
         } catch (IndexOutOfBoundsException ignored) {}
     }
 
     /**
      * Marks the adjacent up-right {@link StarBattlePlayTile} as {@link  TileState#EXCLUDED}.
      *
-     * @param starBattleGrid The {@link StarBattleGrid} of the current {@link StarBattlePuzzle}.
      * @param starBattlePlayTile The Tile.
      */
-    public static void excludeUpRight(StarBattleGrid starBattleGrid, StarBattlePlayTile starBattlePlayTile) {
+    public static void excludeUpRight(StarBattlePlayTile starBattlePlayTile) {
 
         try {
-            findUpRight(starBattleGrid, starBattlePlayTile).setTileState(TileState.EXCLUDED);
+            findUpRight(starBattlePlayTile).setTileState(TileState.EXCLUDED);
         } catch (IndexOutOfBoundsException ignored) {}
     }
 
     /**
      * Marks the adjacent right {@link StarBattlePlayTile} as {@link  TileState#EXCLUDED}.
      *
-     * @param starBattleGrid The {@link StarBattleGrid} of the current {@link StarBattlePuzzle}.
      * @param starBattlePlayTile The Tile.
      */
-    public static void excludeRight(StarBattleGrid starBattleGrid, StarBattlePlayTile starBattlePlayTile) {
+    public static void excludeRight(StarBattlePlayTile starBattlePlayTile) {
 
         try {
-            findRight(starBattleGrid, starBattlePlayTile).setTileState(TileState.EXCLUDED);
+            findRight(starBattlePlayTile).setTileState(TileState.EXCLUDED);
         } catch (IndexOutOfBoundsException ignored) {}
     }
 
     /**
      * Marks the adjacent down-right {@link StarBattlePlayTile} as {@link  TileState#EXCLUDED}.
      *
-     * @param starBattleGrid The {@link StarBattleGrid} of the current {@link StarBattlePuzzle}.
      * @param starBattlePlayTile The Tile.
      */
-    public static void excludeDownRight(StarBattleGrid starBattleGrid, StarBattlePlayTile starBattlePlayTile) {
+    public static void excludeDownRight(StarBattlePlayTile starBattlePlayTile) {
 
         try {
-            findDownRight(starBattleGrid, starBattlePlayTile).setTileState(TileState.EXCLUDED);
+            findDownRight(starBattlePlayTile).setTileState(TileState.EXCLUDED);
         } catch (IndexOutOfBoundsException ignored) {}
     }
 
     /**
      * Marks the adjacent down {@link StarBattlePlayTile} as {@link  TileState#EXCLUDED}.
      *
-     * @param starBattleGrid The {@link StarBattleGrid} of the current {@link StarBattlePuzzle}.
      * @param starBattlePlayTile The Tile.
      */
-    public static void excludeDown(StarBattleGrid starBattleGrid, StarBattlePlayTile starBattlePlayTile) {
+    public static void excludeDown(StarBattlePlayTile starBattlePlayTile) {
 
         try {
-            findDown(starBattleGrid, starBattlePlayTile).setTileState(TileState.EXCLUDED);
+            findDown(starBattlePlayTile).setTileState(TileState.EXCLUDED);
         } catch (IndexOutOfBoundsException ignored) {}
     }
 
     /**
      * Marks the adjacent down-left {@link StarBattlePlayTile} as {@link  TileState#EXCLUDED}.
      *
-     * @param starBattleGrid The {@link StarBattleGrid} of the current {@link StarBattlePuzzle}.
      * @param starBattlePlayTile The Tile.
      */
-    public static void excludeDownLeft(StarBattleGrid starBattleGrid, StarBattlePlayTile starBattlePlayTile) {
+    public static void excludeDownLeft(StarBattlePlayTile starBattlePlayTile) {
 
         try {
-            findDownLeft(starBattleGrid, starBattlePlayTile).setTileState(TileState.EXCLUDED);
+            findDownLeft(starBattlePlayTile).setTileState(TileState.EXCLUDED);
         } catch (IndexOutOfBoundsException ignored) {}
     }
 
     /**
      * Marks the adjacent left {@link StarBattlePlayTile} as {@link  TileState#EXCLUDED}.
      *
-     * @param starBattleGrid The {@link StarBattleGrid} of the current {@link StarBattlePuzzle}.
      * @param starBattlePlayTile The Tile.
      */
-    public static void excludeLeft(StarBattleGrid starBattleGrid, StarBattlePlayTile starBattlePlayTile) {
+    public static void excludeLeft(StarBattlePlayTile starBattlePlayTile) {
 
         try {
-            findLeft(starBattleGrid, starBattlePlayTile).setTileState(TileState.EXCLUDED);
+            findLeft(starBattlePlayTile).setTileState(TileState.EXCLUDED);
         } catch (IndexOutOfBoundsException ignored) {}
     }
 
     /**
      * Marks the adjacent up-left {@link StarBattlePlayTile} as {@link  TileState#EXCLUDED}.
      *
-     * @param starBattleGrid The {@link StarBattleGrid} of the current {@link StarBattlePuzzle}.
      * @param starBattlePlayTile The Tile.
      */
-    public static void excludeUpLeft(StarBattleGrid starBattleGrid, StarBattlePlayTile starBattlePlayTile) {
+    public static void excludeUpLeft(StarBattlePlayTile starBattlePlayTile) {
 
         try {
-            findUpLeft(starBattleGrid, starBattlePlayTile).setTileState(TileState.EXCLUDED);
+            findUpLeft(starBattlePlayTile).setTileState(TileState.EXCLUDED);
         } catch (IndexOutOfBoundsException ignored) {}
     }
 
@@ -262,11 +266,10 @@ public class StarBattleLogicAssist {
      * <p>
      * The maximum amount of stars/region is determined by {@link StarBattlePuzzle#getSTARS()}.
      *
-     * @param starBattlePuzzle The {@link StarBattlePuzzle} being solved.
      * @param tileList The region being checked.
      * @return True, if the maximum amount of stars has been reached, false if not.
      */
-    public static boolean hasMaxStars(StarBattlePuzzle starBattlePuzzle, List<StarBattlePlayTile> tileList) {
+    public static boolean hasMaxStars(List<StarBattlePlayTile> tileList) {
         int maxStars = starBattlePuzzle.getSTARS();
         int currentStars = numberOfStars(tileList);
 
