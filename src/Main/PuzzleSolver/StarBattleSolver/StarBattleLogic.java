@@ -3,6 +3,8 @@ package Main.PuzzleSolver.StarBattleSolver;
 import Main.Puzzle.StarBattle.*;
 import Main.Puzzle.TileState;
 
+import java.util.List;
+
 /**
  * This class sets out the logic and rules of the gameplay.
  */
@@ -64,7 +66,15 @@ public class StarBattleLogic {
     public static void markAsExcluded(StarBattlePlayTile starBattlePlayTile) {
         starBattlePlayTile.setTileState(TileState.EXCLUDED);
 
-        int maxStars = starBattlePuzzle.getSTARS();
+
+        int row = starBattlePlayTile.getY();
+        int column = starBattlePlayTile.getX();
+        String tileGroup = starBattlePlayTile.getTILE_GROUP();
+
+        StarBattleLogicAssist.checkAndFillBlanks(starBattleGrid.getTileRow(row));
+        StarBattleLogicAssist.checkAndFillBlanks(starBattleGrid.getTileColumn(column));
+        StarBattleLogicAssist.checkAndFillBlanks(starBattleGrid.getTileGroup(tileGroup));
+
     }
 
     /**
@@ -117,6 +127,11 @@ public class StarBattleLogic {
      */
     public static boolean groupHasMaxStars(String tileGroup) {
         return StarBattleLogicAssist.hasMaxStars(starBattleGrid.getTileGroup(tileGroup));
+    }
+
+    public static void checkIfViable(StarBattlePlayTile starBattlePlayTile) {
+        List<StarBattlePlayTile> surroundingTiles = StarBattleLogicAssist.surroundingTiles(starBattlePlayTile);
+        List<List<StarBattlePlayTile>> tileGroups = StarBattleLogicAssist.tileGroups(surroundingTiles);
     }
 
 

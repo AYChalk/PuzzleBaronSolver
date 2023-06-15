@@ -3,6 +3,7 @@ package Main.PuzzleSolver.StarBattleSolver;
 import Main.Puzzle.StarBattle.*;
 import Main.Puzzle.TileState;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -127,6 +128,61 @@ public class StarBattleLogicAssist {
     }
 
     /**
+     * @param starBattlePlayTile The {@link StarBattlePlayTile} whose neighbours you want to find.
+     * @return A List of the neighbouring Tiles.
+     */
+    public static List<StarBattlePlayTile> surroundingTiles(StarBattlePlayTile starBattlePlayTile) {
+        List<StarBattlePlayTile> surroundingTiles = new ArrayList<>();
+        try {
+            surroundingTiles.add(findUp(starBattlePlayTile));
+        } catch (IndexOutOfBoundsException ignored) {}
+        try {
+            surroundingTiles.add(findUpRight(starBattlePlayTile));
+        } catch (IndexOutOfBoundsException ignored) {}
+        try {
+            surroundingTiles.add(findRight(starBattlePlayTile));
+        } catch (IndexOutOfBoundsException ignored) {}
+        try {
+            surroundingTiles.add(findDownRight(starBattlePlayTile));
+        } catch (IndexOutOfBoundsException ignored) {}
+        try {
+            surroundingTiles.add(findDown(starBattlePlayTile));
+        } catch (IndexOutOfBoundsException ignored) {}
+        try {
+            surroundingTiles.add(findDownLeft(starBattlePlayTile));
+        } catch (IndexOutOfBoundsException ignored) {}
+        try {
+            surroundingTiles.add(findLeft(starBattlePlayTile));
+        } catch (IndexOutOfBoundsException ignored) {}
+        try {
+            surroundingTiles.add(findUpLeft(starBattlePlayTile));
+        } catch (IndexOutOfBoundsException ignored) {}
+
+        return surroundingTiles;
+    }
+
+    /**
+     * Given a List of {@link StarBattlePlayTile}s, will find all the distinct Tile groups
+     * that the elements of said list belong to.
+     *
+     * @param tileList The list of tiles.
+     * @return All the distinct tile groups.
+     */
+    public static List<List<StarBattlePlayTile>> tileGroups(List<StarBattlePlayTile> tileList) {
+        List<List<StarBattlePlayTile>> tileGroups = new ArrayList<>();
+        List<StarBattlePlayTile> tileGroup;
+
+        for (StarBattlePlayTile starBattlePlayTile: tileList) {
+            tileGroup = starBattleGrid.getTileGroup(starBattlePlayTile.getTILE_GROUP());
+            if (!tileGroups.contains(tileGroup)) {
+                tileGroups.add(tileGroup);
+            }
+        }
+
+        return tileGroups;
+    }
+
+    /**
      * Marks the adjacent up {@link StarBattlePlayTile} as {@link  TileState#EXCLUDED}.
      *
      * @param starBattlePlayTile The Tile.
@@ -134,7 +190,7 @@ public class StarBattleLogicAssist {
     public static void excludeUp(StarBattlePlayTile starBattlePlayTile) {
 
         try {
-            findUp(starBattlePlayTile).setTileState(TileState.EXCLUDED);
+            StarBattleLogic.markAsExcluded(findUp(starBattlePlayTile));
         } catch (IndexOutOfBoundsException ignored) {}
     }
 
@@ -146,7 +202,7 @@ public class StarBattleLogicAssist {
     public static void excludeUpRight(StarBattlePlayTile starBattlePlayTile) {
 
         try {
-            findUpRight(starBattlePlayTile).setTileState(TileState.EXCLUDED);
+            StarBattleLogic.markAsExcluded(findUpRight(starBattlePlayTile));
         } catch (IndexOutOfBoundsException ignored) {}
     }
 
@@ -158,7 +214,7 @@ public class StarBattleLogicAssist {
     public static void excludeRight(StarBattlePlayTile starBattlePlayTile) {
 
         try {
-            findRight(starBattlePlayTile).setTileState(TileState.EXCLUDED);
+            StarBattleLogic.markAsExcluded(findRight(starBattlePlayTile));
         } catch (IndexOutOfBoundsException ignored) {}
     }
 
@@ -170,7 +226,7 @@ public class StarBattleLogicAssist {
     public static void excludeDownRight(StarBattlePlayTile starBattlePlayTile) {
 
         try {
-            findDownRight(starBattlePlayTile).setTileState(TileState.EXCLUDED);
+            StarBattleLogic.markAsExcluded(findDownRight(starBattlePlayTile));
         } catch (IndexOutOfBoundsException ignored) {}
     }
 
@@ -182,7 +238,7 @@ public class StarBattleLogicAssist {
     public static void excludeDown(StarBattlePlayTile starBattlePlayTile) {
 
         try {
-            findDown(starBattlePlayTile).setTileState(TileState.EXCLUDED);
+            StarBattleLogic.markAsExcluded(findDown(starBattlePlayTile));
         } catch (IndexOutOfBoundsException ignored) {}
     }
 
@@ -194,7 +250,7 @@ public class StarBattleLogicAssist {
     public static void excludeDownLeft(StarBattlePlayTile starBattlePlayTile) {
 
         try {
-            findDownLeft(starBattlePlayTile).setTileState(TileState.EXCLUDED);
+            StarBattleLogic.markAsExcluded(findDownLeft(starBattlePlayTile));
         } catch (IndexOutOfBoundsException ignored) {}
     }
 
@@ -206,7 +262,7 @@ public class StarBattleLogicAssist {
     public static void excludeLeft(StarBattlePlayTile starBattlePlayTile) {
 
         try {
-            findLeft(starBattlePlayTile).setTileState(TileState.EXCLUDED);
+            StarBattleLogic.markAsExcluded(findLeft(starBattlePlayTile));
         } catch (IndexOutOfBoundsException ignored) {}
     }
 
@@ -218,7 +274,7 @@ public class StarBattleLogicAssist {
     public static void excludeUpLeft(StarBattlePlayTile starBattlePlayTile) {
 
         try {
-            findUpLeft(starBattlePlayTile).setTileState(TileState.EXCLUDED);
+            StarBattleLogic.markAsExcluded(findUpLeft(starBattlePlayTile));
         } catch (IndexOutOfBoundsException ignored) {}
     }
 
@@ -286,6 +342,28 @@ public class StarBattleLogicAssist {
         for (StarBattlePlayTile tile : tileList) {
             if (tile.getTileState().equals(TileState.BLANK)) {
                 tile.setTileState(TileState.EXCLUDED);
+            }
+        }
+    }
+
+    /**
+     * Checks the amount of {@link StarBattlePlayTile} in a given region (row, column, or tile group)
+     * that are marked as {@link TileState#BLANK} and the amount which are marked as {@link TileState#CHECKED}.
+     * If the amount of remaining blank tiles is equal to the amount of stars necessary to make up
+     * {@link StarBattlePuzzle#getSTARS()}, it marks the remaining blank tiles as stars.
+     *
+     * @param tileList The region being checked.
+     */
+    public static void checkAndFillBlanks(List<StarBattlePlayTile> tileList) {
+        int maxStars = starBattlePuzzle.getSTARS();
+        int regionStars = numberOfStars(tileList);
+        int regionBlanks = numberOfBlanks(tileList);
+
+        if (maxStars - regionStars == regionBlanks) {
+            for (StarBattlePlayTile starBattlePlayTile : tileList) {
+                if (starBattlePlayTile.getTileState().equals(TileState.BLANK)) {
+                    starBattlePlayTile.setTileState(TileState.CHECKED);
+                }
             }
         }
     }
