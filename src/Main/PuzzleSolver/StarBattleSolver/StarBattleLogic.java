@@ -132,6 +132,7 @@ public class StarBattleLogic {
     public static void checkIfViable(StarBattlePlayTile starBattlePlayTile) {
         List<StarBattlePlayTile> surroundingTiles = StarBattleLogicAssist.surroundingTiles(starBattlePlayTile);
         List<List<StarBattlePlayTile>> tileGroups = StarBattleLogicAssist.tileGroups(surroundingTiles);
+
     }
 
 

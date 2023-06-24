@@ -368,4 +368,24 @@ public class StarBattleLogicAssist {
         }
     }
 
+    /**
+     * Checks a given region (row, column, tile group) of {@link StarBattlePlayTile}s
+     * and determines whether there would be enough {@link TileState#BLANK} tiles remaining
+     * to accommodate the remaining stars that need to be added to the region, if a certain number
+     * of them were to be excluded.
+     *
+     * @param tileList The region being examined.
+     * @param excluded The number of tiles being hypothetically excluded.
+     * @return true, if there would be enough blank tiles left, even after excluding this amount.
+     *          false if not.
+     */
+    public static boolean enoughTiles(List<StarBattlePlayTile> tileList, int excluded) {
+        int stars = numberOfStars(tileList);
+        int remainingStars = starBattlePuzzle.getSTARS() - stars;
+        int blanks = numberOfBlanks(tileList);
+        int remainingBlanks = blanks - excluded;
+
+        return remainingBlanks >= remainingStars;
+    }
+
 }
