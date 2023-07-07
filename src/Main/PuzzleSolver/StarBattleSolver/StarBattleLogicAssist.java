@@ -4,7 +4,9 @@ import Main.Puzzle.StarBattle.*;
 import Main.Puzzle.TileState;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * This class provides helper methods for the {@link  StarBattleLogic} class.
@@ -181,6 +183,73 @@ public class StarBattleLogicAssist {
 
         return tileGroups;
     }
+
+    /**
+     * Given a List of {@link StarBattlePlayTile}s, will find all the distinct Tile groups
+     * that the elements of said list belong to and how many of the StarBattlePlayTiles belong to each group.
+     *
+     * @param tileList the List of Tiles to be checked.
+     * @return a Map with all the distinct groups and the number of tiles in each group.
+     */
+    public static Map<List<StarBattlePlayTile>, Integer> tileGroupsAndMembers(List<StarBattlePlayTile> tileList) {
+        Map<List<StarBattlePlayTile>, Integer> tileGroupsAndMembers = new HashMap<>();
+        List<StarBattlePlayTile> tileGroup;
+
+        for (StarBattlePlayTile starBattlePlayTile: tileList) {
+            tileGroup = starBattleGrid.getTileGroup(starBattlePlayTile.getTILE_GROUP());
+
+            int value = tileGroupsAndMembers.getOrDefault(tileGroup, 0);
+            value++;
+
+            tileGroupsAndMembers.put(tileGroup, value);
+        }
+        return tileGroupsAndMembers;
+    }
+
+    /**
+     * Given a List of {@link StarBattlePlayTile}s, will find all the distinct Tile rows
+     * that the elements of said list belong to and how many of the StarBattlePlayTiles belong to each row.
+     *
+     * @param tileList the List of Tiles to be checked.
+     * @return a Map with all the distinct rows and the number of tiles in each row.
+     */
+    public static Map<List<StarBattlePlayTile>, Integer> tileRowsAndMembers(List<StarBattlePlayTile> tileList) {
+        Map<List<StarBattlePlayTile>, Integer> tileRowsAndMembers = new HashMap<>();
+        List<StarBattlePlayTile> tileRow;
+
+        for (StarBattlePlayTile starBattlePlayTile: tileList) {
+            tileRow = starBattleGrid.getTileRow(starBattlePlayTile.getY());
+
+            int value = tileRowsAndMembers.getOrDefault(tileRow, 0);
+            value++;
+
+            tileRowsAndMembers.put(tileRow, value);
+        }
+        return tileRowsAndMembers;
+    }
+
+    /**
+     * Given a List of {@link StarBattlePlayTile}s, will find all the distinct Tile columns
+     * that the elements of said list belong to and how many of the StarBattlePlayTiles belong to each column.
+     *
+     * @param tileList the List of Tiles to be checked.
+     * @return a Map with all the distinct rows and the number of tiles in each column.
+     */
+    public static Map<List<StarBattlePlayTile>, Integer> tileColumnsAndMembers(List<StarBattlePlayTile> tileList) {
+        Map<List<StarBattlePlayTile>, Integer> tileColumnsAndMembers = new HashMap<>();
+        List<StarBattlePlayTile> tileColumn;
+
+        for (StarBattlePlayTile starBattlePlayTile: tileList) {
+            tileColumn = starBattleGrid.getTileColumn(starBattlePlayTile.getX());
+
+            int value = tileColumnsAndMembers.getOrDefault(tileColumn, 0);
+            value++;
+
+            tileColumnsAndMembers.put(tileColumn, value);
+        }
+        return tileColumnsAndMembers;
+    }
+
 
     /**
      * Marks the adjacent up {@link StarBattlePlayTile} as {@link  TileState#EXCLUDED}.

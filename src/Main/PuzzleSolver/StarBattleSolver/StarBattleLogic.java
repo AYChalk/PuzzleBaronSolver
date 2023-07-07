@@ -4,6 +4,7 @@ import Main.Puzzle.StarBattle.*;
 import Main.Puzzle.TileState;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * This class sets out the logic and rules of the gameplay.
@@ -129,10 +130,37 @@ public class StarBattleLogic {
         return StarBattleLogicAssist.hasMaxStars(starBattleGrid.getTileGroup(tileGroup));
     }
 
+    /**
+     *
+     *
+     * @param starBattlePlayTile
+     */
     public static void checkIfViable(StarBattlePlayTile starBattlePlayTile) {
         List<StarBattlePlayTile> surroundingTiles = StarBattleLogicAssist.surroundingTiles(starBattlePlayTile);
-        List<List<StarBattlePlayTile>> tileGroups = StarBattleLogicAssist.tileGroups(surroundingTiles);
+        Map<List<StarBattlePlayTile>, Integer> tileGroupsAndMembers = StarBattleLogicAssist.tileGroupsAndMembers(surroundingTiles);
+        Map<List<StarBattlePlayTile>, Integer> tileRowsAndMembers = StarBattleLogicAssist.tileRowsAndMembers(surroundingTiles);
+        Map<List<StarBattlePlayTile>, Integer> tileColumnsAndMembers = StarBattleLogicAssist.tileColumnsAndMembers(surroundingTiles);
 
+        for (Map.Entry<List<StarBattlePlayTile>, Integer> entry : tileGroupsAndMembers.entrySet()) {
+            if (!StarBattleLogicAssist.enoughTiles(entry.getKey(), entry.getValue())) {
+                markAsExcluded(starBattlePlayTile);
+                return;
+            }
+        }
+
+        for (Map.Entry<List<StarBattlePlayTile>, Integer> entry : tileRowsAndMembers.entrySet()) {
+            if (!StarBattleLogicAssist.enoughTiles(entry.getKey(), entry.getValue())) {
+                markAsExcluded(starBattlePlayTile);
+                return;
+            }
+        }
+
+        for (Map.Entry<List<StarBattlePlayTile>, Integer> entry : tileColumnsAndMembers.entrySet()) {
+            if (!StarBattleLogicAssist.enoughTiles(entry.getKey(), entry.getValue())) {
+                markAsExcluded(starBattlePlayTile);
+                return;
+            }
+        }
     }
 
 
