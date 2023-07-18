@@ -45,6 +45,7 @@ public class StarBattleLogic {
      */
     public static void markAsStar(StarBattlePlayTile starBattlePlayTile) {
         starBattlePlayTile.setTileState(TileState.CHECKED);
+        StarBattleSolver.incrementCurrentStars();
         markAdjacentTilesExcluded(starBattlePlayTile);
 
         int row = starBattlePlayTile.getY();
@@ -131,9 +132,12 @@ public class StarBattleLogic {
     }
 
     /**
+     * Checks a given {@link StarBattlePlayTile}, if by marking it as {@link TileState#CHECKED}
+     * and therefore its surrounding tiles as {@link TileState#EXCLUDED}, if there would be enough
+     * {@link TileState#BLANK} Tiles remaining to accommodate the necessary amount of stars.
+     * If not, the Tile is marked as excluded.
      *
-     *
-     * @param starBattlePlayTile
+     * @param starBattlePlayTile the Tile being checked.
      */
     public static void checkIfViable(StarBattlePlayTile starBattlePlayTile) {
         List<StarBattlePlayTile> surroundingTiles = StarBattleLogicAssist.surroundingTiles(starBattlePlayTile);

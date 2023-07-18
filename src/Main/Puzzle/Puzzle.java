@@ -14,10 +14,6 @@ public abstract class Puzzle {
      */
     private Grid GRID;
 
-    /**
-     * Whether the puzzle has been completed according to its specified rules.
-     */
-    private boolean gameOver;
 
     /**
      * Constructs a new Main.Puzzle and creates the Main.Puzzle's Grid.
@@ -27,20 +23,6 @@ public abstract class Puzzle {
      */
     public Puzzle(int GRID_SIZE,  String[][] tileInfo) {
         this.GRID_SIZE = GRID_SIZE;
-        this.gameOver = false;
     }
 
-    /**
-     * @return true if the game is over, false if it isn't.
-     */
-    public boolean isGameOver() {
-        return gameOver;
-    }
-
-    /**
-     * @param gameOver parse true if the game is over.
-     */
-    public void setGameOver(boolean gameOver) {
-        this.gameOver = gameOver;
-    }
 }
