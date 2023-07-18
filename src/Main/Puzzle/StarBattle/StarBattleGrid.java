@@ -1,7 +1,7 @@
-package Main.Puzzle.StarBattle;
+package Puzzle.StarBattle;
 
-import Main.Puzzle.Grid;
-import Main.Puzzle.Tile;
+import Puzzle.Grid;
+import Puzzle.Tile;
 
 import java.util.ArrayList;
 import java.util.List;

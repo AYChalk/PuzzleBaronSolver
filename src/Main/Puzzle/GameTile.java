@@ -1,4 +1,4 @@
-package Main.Puzzle;
+package Puzzle;
 
 /**
  * This class is for Tiles that are set by the game.

@@ -1,7 +1,7 @@
-package Main.PuzzleSolver.StarBattleSolver;
+package PuzzleSolver.StarBattleSolver;
 
-import Main.Puzzle.StarBattle.*;
-import Main.Puzzle.TileState;
+import Puzzle.StarBattle.*;
+import Puzzle.TileState;
 
 import java.util.List;
 import java.util.Map;
@@ -80,9 +80,9 @@ public class StarBattleLogic {
     }
 
     /**
-     * {@link StarBattlePlayTile}s that contain stars ({@link Main.Puzzle.TileState#CHECKED})
+     * {@link StarBattlePlayTile}s that contain stars ({@link Puzzle.TileState#CHECKED})
      * cannot be adjacent. Therefore, if a StarBattlePlayTile contains a star, this method
-     * marks all the adjacent StarBattlePlayTiles as {@link Main.Puzzle.TileState#EXCLUDED}.
+     * marks all the adjacent StarBattlePlayTiles as {@link Puzzle.TileState#EXCLUDED}.
      *
      * @param starBattlePlayTile The {@link StarBattlePlayTile} that contains a star.
      */

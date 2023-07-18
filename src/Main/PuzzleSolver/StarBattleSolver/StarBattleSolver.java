@@ -1,14 +1,14 @@
-package Main.PuzzleSolver.StarBattleSolver;
+package PuzzleSolver.StarBattleSolver;
 
-import Main.Puzzle.StarBattle.StarBattleGrid;
-import Main.Puzzle.StarBattle.StarBattlePlayTile;
-import Main.Puzzle.StarBattle.StarBattlePuzzle;
-import Main.Puzzle.Tile;
+import Puzzle.StarBattle.StarBattleGrid;
+import Puzzle.StarBattle.StarBattlePlayTile;
+import Puzzle.StarBattle.StarBattlePuzzle;
+import Puzzle.Tile;
 
 import java.util.List;
 
 /**
- * This class is for solving {@link StarBattlePuzzle} by using the logic set out in the {@link Main.PuzzleSolver.StarBattleSolver.StarBattleLogic}.
+ * This class is for solving {@link StarBattlePuzzle} by using the logic set out in the {@link PuzzleSolver.StarBattleSolver.StarBattleLogic}.
  */
 public class StarBattleSolver {
 
@@ -24,7 +24,7 @@ public class StarBattleSolver {
 
     /**
      * The total amount of {@link StarBattlePlayTile}s in the {@link #starBattleGrid}
-     * that need to contain stars ({@link Main.Puzzle.TileState#CHECKED}).
+     * that need to contain stars ({@link Puzzle.TileState#CHECKED}).
      */
     private static int totalStars;
 

@@ -1,4 +1,4 @@
-package Main.Puzzle;
+package Puzzle;
 
 /**
  * This class is a template for the Tile's.

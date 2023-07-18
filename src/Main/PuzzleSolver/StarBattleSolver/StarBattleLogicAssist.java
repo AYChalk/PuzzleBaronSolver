@@ -1,7 +1,7 @@
-package Main.PuzzleSolver.StarBattleSolver;
+package PuzzleSolver.StarBattleSolver;
 
-import Main.Puzzle.StarBattle.*;
-import Main.Puzzle.TileState;
+import Puzzle.StarBattle.*;
+import Puzzle.TileState;
 
 import java.util.ArrayList;
 import java.util.HashMap;

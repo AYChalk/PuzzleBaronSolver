@@ -1,8 +1,8 @@
-package Main.Puzzle.StarBattle;
+package Puzzle.StarBattle;
 
-import Main.Puzzle.Puzzle;
-import Main.Puzzle.Tile;
-import Main.Puzzle.TileState;
+import Puzzle.Puzzle;
+import Puzzle.Tile;
+import Puzzle.TileState;
 
 /**
  * This Class represents the StarBattle puzzle that can be found

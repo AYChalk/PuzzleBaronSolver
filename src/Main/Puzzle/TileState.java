@@ -1,4 +1,4 @@
-package Main.Puzzle;
+package Puzzle;
 
 /**
  * This Enum indicates/determines the content of any given {@link PlayTile}.

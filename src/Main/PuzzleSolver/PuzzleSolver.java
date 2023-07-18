@@ -1,4 +1,4 @@
-package Main.PuzzleSolver;
+package PuzzleSolver;
 
 public class PuzzleSolver {
 }

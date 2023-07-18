@@ -1,7 +1,7 @@
-package Main.Puzzle.StarBattle;
+package Puzzle.StarBattle;
 
-import Main.Puzzle.PlayTile;
-import Main.Puzzle.TileState;
+import Puzzle.PlayTile;
+import Puzzle.TileState;
 
 public class StarBattlePlayTile extends PlayTile {
 
@@ -14,7 +14,7 @@ public class StarBattlePlayTile extends PlayTile {
     private final String TILE_GROUP;
 
     /**
-     * Constructs a PlayTile at position (x,y) on the {@link Main.Puzzle}s {@link StarBattleGrid}.
+     * Constructs a PlayTile at position (x,y) on the {@link Puzzle}s {@link StarBattleGrid}.
      * The PlayTile's tileState is always initialised as {@link TileState#BLANK}.
      * i.e. when a PlayTile is constructed the player has not yet determined its final state.
      *
