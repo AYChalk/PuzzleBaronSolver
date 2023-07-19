@@ -39,8 +39,8 @@ public class StarBattleLogicAssist {
      * @throws IndexOutOfBoundsException If the adjacent Tile would be outside the Grid's parameters.
      */
     public static StarBattlePlayTile findUp(StarBattlePlayTile starBattlePlayTile) throws IndexOutOfBoundsException {
-        int x = starBattlePlayTile.getX();
-        int y = starBattlePlayTile.getY();
+        int x = starBattlePlayTile.getCOLUMN();
+        int y = starBattlePlayTile.getROW();
 
         return (StarBattlePlayTile) starBattleGrid.getGRID().get(y-1).get(x);
     }
@@ -51,8 +51,8 @@ public class StarBattleLogicAssist {
      * @throws IndexOutOfBoundsException If the adjacent Tile would be outside the Grid's parameters.
      */
     public static StarBattlePlayTile findUpRight(StarBattlePlayTile starBattlePlayTile) throws IndexOutOfBoundsException {
-        int x = starBattlePlayTile.getX();
-        int y = starBattlePlayTile.getY();
+        int x = starBattlePlayTile.getCOLUMN();
+        int y = starBattlePlayTile.getROW();
 
         return (StarBattlePlayTile) starBattleGrid.getGRID().get(y-1).get(x+1);
     }
@@ -63,8 +63,8 @@ public class StarBattleLogicAssist {
      * @throws IndexOutOfBoundsException If the adjacent Tile would be outside the Grid's parameters.
      */
     public static StarBattlePlayTile findRight(StarBattlePlayTile starBattlePlayTile) throws IndexOutOfBoundsException {
-        int x = starBattlePlayTile.getX();
-        int y = starBattlePlayTile.getY();
+        int x = starBattlePlayTile.getCOLUMN();
+        int y = starBattlePlayTile.getROW();
 
         return (StarBattlePlayTile) starBattleGrid.getGRID().get(y).get(x+1);
     }
@@ -75,8 +75,8 @@ public class StarBattleLogicAssist {
      * @throws IndexOutOfBoundsException If the adjacent Tile would be outside the Grid's parameters.
      */
     public static StarBattlePlayTile findDownRight(StarBattlePlayTile starBattlePlayTile) throws IndexOutOfBoundsException {
-        int x = starBattlePlayTile.getX();
-        int y = starBattlePlayTile.getY();
+        int x = starBattlePlayTile.getCOLUMN();
+        int y = starBattlePlayTile.getROW();
 
         return (StarBattlePlayTile) starBattleGrid.getGRID().get(y+1).get(x+1);
     }
@@ -87,8 +87,8 @@ public class StarBattleLogicAssist {
      * @throws IndexOutOfBoundsException If the adjacent Tile would be outside the Grid's parameters.
      */
     public static StarBattlePlayTile findDown(StarBattlePlayTile starBattlePlayTile) throws IndexOutOfBoundsException {
-        int x = starBattlePlayTile.getX();
-        int y = starBattlePlayTile.getY();
+        int x = starBattlePlayTile.getCOLUMN();
+        int y = starBattlePlayTile.getROW();
 
         return (StarBattlePlayTile) starBattleGrid.getGRID().get(y+1).get(x);
     }
@@ -99,8 +99,8 @@ public class StarBattleLogicAssist {
      * @throws IndexOutOfBoundsException If the adjacent Tile would be outside the Grid's parameters.
      */
     public static StarBattlePlayTile findDownLeft(StarBattlePlayTile starBattlePlayTile) throws IndexOutOfBoundsException {
-        int x = starBattlePlayTile.getX();
-        int y = starBattlePlayTile.getY();
+        int x = starBattlePlayTile.getCOLUMN();
+        int y = starBattlePlayTile.getROW();
 
         return (StarBattlePlayTile) starBattleGrid.getGRID().get(y+1).get(x-1);
     }
@@ -111,8 +111,8 @@ public class StarBattleLogicAssist {
      * @throws IndexOutOfBoundsException If the adjacent Tile would be outside the Grid's parameters.
      */
     public static StarBattlePlayTile findLeft(StarBattlePlayTile starBattlePlayTile) throws IndexOutOfBoundsException {
-        int x = starBattlePlayTile.getX();
-        int y = starBattlePlayTile.getY();
+        int x = starBattlePlayTile.getCOLUMN();
+        int y = starBattlePlayTile.getROW();
 
         return (StarBattlePlayTile) starBattleGrid.getGRID().get(y).get(x-1);
     }
@@ -123,8 +123,8 @@ public class StarBattleLogicAssist {
      * @throws IndexOutOfBoundsException If the adjacent Tile would be outside the Grid's parameters.
      */
     public static StarBattlePlayTile findUpLeft(StarBattlePlayTile starBattlePlayTile) throws IndexOutOfBoundsException {
-        int x = starBattlePlayTile.getX();
-        int y = starBattlePlayTile.getY();
+        int x = starBattlePlayTile.getCOLUMN();
+        int y = starBattlePlayTile.getROW();
 
         return (StarBattlePlayTile) starBattleGrid.getGRID().get(y-1).get(x-1);
     }
@@ -218,7 +218,7 @@ public class StarBattleLogicAssist {
         List<StarBattlePlayTile> tileRow;
 
         for (StarBattlePlayTile starBattlePlayTile: tileList) {
-            tileRow = starBattleGrid.getTileRow(starBattlePlayTile.getY());
+            tileRow = starBattleGrid.getTileRow(starBattlePlayTile.getROW());
 
             int value = tileRowsAndMembers.getOrDefault(tileRow, 0);
             value++;
@@ -240,7 +240,7 @@ public class StarBattleLogicAssist {
         List<StarBattlePlayTile> tileColumn;
 
         for (StarBattlePlayTile starBattlePlayTile: tileList) {
-            tileColumn = starBattleGrid.getTileColumn(starBattlePlayTile.getX());
+            tileColumn = starBattleGrid.getTileColumn(starBattlePlayTile.getCOLUMN());
 
             int value = tileColumnsAndMembers.getOrDefault(tileColumn, 0);
             value++;
@@ -431,7 +431,7 @@ public class StarBattleLogicAssist {
         if (maxStars - regionStars == regionBlanks) {
             for (StarBattlePlayTile starBattlePlayTile : tileList) {
                 if (starBattlePlayTile.getTileState().equals(TileState.BLANK)) {
-                    starBattlePlayTile.setTileState(TileState.CHECKED);
+                    StarBattleLogic.markAsStar(starBattlePlayTile);
                 }
             }
         }

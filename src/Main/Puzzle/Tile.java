@@ -26,13 +26,13 @@ public abstract class Tile {
      * <p>
      * The Tile's position cannot change and so the variable is final.
      */
-    private final int X;
+    private final int COLUMN;
     /**
      * The y value of the Tile's position on the {@link Grid}.
      * <p>
      * The Tile's position cannot change and so the variable is final.
      */
-    private final int Y;
+    private final int ROW;
     /**
      * Each Tile has a unique ID.
      * This is assigned upon the Tile's construction and cannot be changed.
@@ -43,28 +43,28 @@ public abstract class Tile {
     /**
      * Constructs a new Tile, at the specified (x,y) position on the {@link Grid}.
      *
-     * @param X  The x value of the Tile's position on the {@link Grid}.
-     * @param Y  The y value of the Tile's position on the {@link Grid}.
+     * @param COLUMN  The x value of the Tile's position on the {@link Grid}.
+     * @param ROW  The y value of the Tile's position on the {@link Grid}.
      * @param ID The unique ID of the Tile.
      */
-    public Tile(int X, int Y, int ID) {
-        this.X = X;
-        this.Y = Y;
+    public Tile(int COLUMN, int ROW, int ID) {
+        this.COLUMN = COLUMN;
+        this.ROW = ROW;
         this.ID = ID;
     }
 
     /**
-     * @return The {@link #X} value of the Tile's position on the {@link Grid}.
+     * @return The {@link #COLUMN} value of the Tile's position on the {@link Grid}.
      */
-    public int getX() {
-        return X;
+    public int getCOLUMN() {
+        return COLUMN;
     }
 
     /**
-     * @return The {@link #Y} value of the Tile's position on the {@link Grid}.
+     * @return The {@link #ROW} value of the Tile's position on the {@link Grid}.
      */
-    public int getY() {
-        return Y;
+    public int getROW() {
+        return ROW;
     }
 
 

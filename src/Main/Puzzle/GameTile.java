@@ -10,11 +10,11 @@ public abstract class GameTile extends Tile {
     /**
      * Constructs a GameTile at position (x,y) on the {@link Puzzle}s {@link Grid}.
      *
-     * @param X The x value of the Tile's position on the {@link Grid}.
-     * @param Y The y value of the Tile's position on the {@link Grid}.
+     * @param COLUMN The x value of the Tile's position on the {@link Grid}.
+     * @param ROW The y value of the Tile's position on the {@link Grid}.
      * @param ID The unique ID of the Tile.
      */
-    public GameTile(int X, int Y, int ID) {
-        super(X, Y, ID);
+    public GameTile(int COLUMN, int ROW, int ID) {
+        super(COLUMN, ROW, ID);
     }
 }

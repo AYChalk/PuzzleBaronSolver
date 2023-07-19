@@ -18,13 +18,13 @@ public class StarBattlePlayTile extends PlayTile {
      * The PlayTile's tileState is always initialised as {@link TileState#BLANK}.
      * i.e. when a PlayTile is constructed the player has not yet determined its final state.
      *
-     * @param X  The x value of the Tile's position on the {@link StarBattleGrid}.
-     * @param Y  The y value of the Tile's position on the {@link StarBattleGrid}.
+     * @param COLUMN  The x value of the Tile's position on the {@link StarBattleGrid}.
+     * @param ROW  The y value of the Tile's position on the {@link StarBattleGrid}.
      * @param ID The unique ID of the Tile.
      * @param tileGroup The {@link #TILE_GROUP}
      */
-    public StarBattlePlayTile(int X, int Y, int ID, String tileGroup) {
-        super(X, Y, ID);
+    public StarBattlePlayTile(int COLUMN, int ROW, int ID, String tileGroup) {
+        super(COLUMN, ROW, ID);
         this.TILE_GROUP = tileGroup;
     }
 

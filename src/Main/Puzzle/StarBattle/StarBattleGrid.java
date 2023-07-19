@@ -37,11 +37,11 @@ public class StarBattleGrid extends Grid {
         List<StarBattlePlayTile> tiles;
         String tileGroup;
 
-        for (int i = 0; i < size; i++){
+        for (int row = 0; row < size; row++){
             tiles = new ArrayList<>();
-            for (int j = 0; j < size; j++){
-                tileGroup = tileInfo[id][0];
-                tiles.add(new StarBattlePlayTile(j, i, id, tileGroup));
+            for (int column = 0; column < size; column++){
+                tileGroup = tileInfo[row][column];
+                tiles.add(new StarBattlePlayTile(column, row, id, tileGroup));
                 id++;
             }
             this.getGRID().add(tiles);
@@ -102,5 +102,10 @@ public class StarBattleGrid extends Grid {
         }
 
         return row;
+    }
+
+    @Override
+    public List<List<? extends Tile>> getGRID() {
+        return super.getGRID();
     }
 }

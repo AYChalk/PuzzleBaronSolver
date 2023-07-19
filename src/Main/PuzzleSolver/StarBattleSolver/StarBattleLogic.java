@@ -48,8 +48,8 @@ public class StarBattleLogic {
         StarBattleSolver.incrementCurrentStars();
         markAdjacentTilesExcluded(starBattlePlayTile);
 
-        int row = starBattlePlayTile.getY();
-        int column = starBattlePlayTile.getX();
+        int row = starBattlePlayTile.getROW();
+        int column = starBattlePlayTile.getCOLUMN();
         String tileGroup = starBattlePlayTile.getTILE_GROUP();
 
         if (rowHasMaxStars(row)) {
@@ -66,11 +66,15 @@ public class StarBattleLogic {
     }
 
     public static void markAsExcluded(StarBattlePlayTile starBattlePlayTile) {
+        if (!starBattlePlayTile.getTileState().equals(TileState.BLANK)) {
+            return;
+        }
         starBattlePlayTile.setTileState(TileState.EXCLUDED);
+        StarBattleSolver.incrementCurrentExcluded();
 
 
-        int row = starBattlePlayTile.getY();
-        int column = starBattlePlayTile.getX();
+        int row = starBattlePlayTile.getROW();
+        int column = starBattlePlayTile.getCOLUMN();
         String tileGroup = starBattlePlayTile.getTILE_GROUP();
 
         StarBattleLogicAssist.checkAndFillBlanks(starBattleGrid.getTileRow(row));

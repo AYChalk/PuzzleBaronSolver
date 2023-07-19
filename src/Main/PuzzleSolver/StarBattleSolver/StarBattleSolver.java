@@ -4,6 +4,7 @@ import Puzzle.StarBattle.StarBattleGrid;
 import Puzzle.StarBattle.StarBattlePlayTile;
 import Puzzle.StarBattle.StarBattlePuzzle;
 import Puzzle.Tile;
+import Testers.StarBattleTest.StarBattleTest;
 
 import java.util.List;
 
@@ -36,6 +37,8 @@ public class StarBattleSolver {
      */
     private static int currentStars;
 
+    private static int currentExcluded;
+
     /**
      * Sets the value of {@link #starBattlePuzzle} and {@link #starBattleGrid}.
      * Sets the same values in the {@link StarBattleLogic} class by calling its
@@ -48,6 +51,8 @@ public class StarBattleSolver {
         starBattleGrid = starBattlePuzzle.getSTAR_BATTLE_GRID();
         StarBattleLogic.setStarBattlePuzzle(starBattlePuzzle);
         totalStars = starBattlePuzzle.getSTARS() * starBattleGrid.getSIZE();
+        currentStars = 0;
+        currentExcluded = 0;
     }
 
     /**
@@ -55,15 +60,31 @@ public class StarBattleSolver {
      */
     public static void solve() {
 
+        int startStars;
+        int startExcluded;
+
         while (currentStars < totalStars) {
+            startStars = currentStars;
+            startExcluded = currentExcluded;
+
             List<List<? extends Tile>> tileGrid = starBattleGrid.getGRID();
             for (List<? extends Tile> tileList : tileGrid) {
                 for (Tile tile : tileList) {
                     StarBattlePlayTile starBattlePlayTile = (StarBattlePlayTile) tile;
                     StarBattleLogic.checkIfViable(starBattlePlayTile);
+
+                    StarBattleTest.printGrid();
+                    System.out.println("");
                 }
             }
+
+            if (startStars == currentStars && startExcluded == currentExcluded) {
+                System.out.println("Stuck");
+                return;
+            }
         }
+
+        System.out.println("Solved");
 
     }
 
@@ -72,6 +93,10 @@ public class StarBattleSolver {
      */
     public static void incrementCurrentStars() {
         currentStars++;
+    }
+
+    public static void incrementCurrentExcluded() {
+        currentExcluded++;
     }
 
 

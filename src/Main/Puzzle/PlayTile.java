@@ -18,12 +18,12 @@ public class PlayTile extends Tile {
      * The PlayTile's {@link #tileState} is always initialised as {@link TileState#BLANK}.
      * i.e. when a PlayTile is constructed the player has not yet determined its final state.
      *
-     * @param X The x value of the Tile's position on the {@link Grid}.
-     * @param Y The y value of the Tile's position on the {@link Grid}.
+     * @param COLUMN The x value of the Tile's position on the {@link Grid}.
+     * @param ROW The y value of the Tile's position on the {@link Grid}.
      * @param ID The unique ID of the Tile.
      */
-    public PlayTile(int X, int Y, int ID) {
-        super(X, Y, ID);
+    public PlayTile(int COLUMN, int ROW, int ID) {
+        super(COLUMN, ROW, ID);
         tileState = TileState.BLANK;
     }
 
