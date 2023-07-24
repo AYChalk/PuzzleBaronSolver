@@ -98,7 +98,7 @@ public class StarBattleGrid extends Grid {
         List<StarBattlePlayTile> row = new ArrayList<>();
 
         for (int i = 0; i < getSIZE(); i++) {
-            row.add((StarBattlePlayTile) getGRID().get(0).get(i));
+            row.add((StarBattlePlayTile) getGRID().get(tileRow).get(i));
         }
 
         return row;
