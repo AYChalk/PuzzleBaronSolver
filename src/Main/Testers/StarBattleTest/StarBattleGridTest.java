@@ -12,50 +12,21 @@ import java.util.List;
 
 public class StarBattleGridTest {
 
-    private static StarBattleGrid starBattleGrid = null;
+    private static StarBattleGrid starBattleGrid;
 
-
-    private static final List<String> groups = new ArrayList<>();
+    private static List<String> groups;
 
     private static int gridSize;
 
     private static int starCount;
 
     public static void test() {
-        gridInput();
         testGetGrid();
         testGetGroup();
         testGetRow();
         testGetColumn();
     }
 
-    private static void gridInput() {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-            String[][] tileInfo = new String[8][8];
-
-            System.out.println("Grid size:");
-            gridSize = Integer.parseInt(reader.readLine());
-
-//            System.out.println("Star count:");
-//            starCount = Integer.parseInt(reader.readLine());
-
-            System.out.println("Tile info:");
-            for (int i = 0; i < gridSize; i++) {
-                String[] row = reader.readLine().split(" ");
-                tileInfo[i] = row;
-
-                starBattleGrid = new StarBattleGrid(gridSize, tileInfo);
-
-                for (String group : row) {
-                    if (!groups.contains(group)) {
-                        groups.add(group);
-                    }
-                }
-            }
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-    }
 
     private static void testGetGrid() {
         System.out.println("Test getGrid:");
@@ -108,5 +79,25 @@ public class StarBattleGridTest {
             tileColumn.forEach(tile -> System.out.print(tile.getCOLUMN() + ":" + tile.getID() + " "));
             System.out.println();
         }
+    }
+
+    public static StarBattleGrid getStarBattleGrid() {
+        return starBattleGrid;
+    }
+
+    public static void setStarBattleGrid(StarBattleGrid starBattleGrid) {
+        StarBattleGridTest.starBattleGrid = starBattleGrid;
+    }
+
+    public static void setGroups(List<String> groups) {
+        StarBattleGridTest.groups = groups;
+    }
+
+    public static void setGridSize(int gridSize) {
+        StarBattleGridTest.gridSize = gridSize;
+    }
+
+    public static void setStarCount(int starCount) {
+        StarBattleGridTest.starCount = starCount;
     }
 }
