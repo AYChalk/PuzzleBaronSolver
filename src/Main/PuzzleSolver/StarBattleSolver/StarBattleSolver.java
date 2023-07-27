@@ -73,8 +73,6 @@ public class StarBattleSolver {
                     StarBattlePlayTile starBattlePlayTile = (StarBattlePlayTile) tile;
                     StarBattleLogic.checkIfViable(starBattlePlayTile);
 
-                    StarBattleTest.printGrid();
-                    System.out.println("");
                 }
             }
 
